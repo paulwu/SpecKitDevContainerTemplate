@@ -1,0 +1,53 @@
+# Core testing and specification validation dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+pytest-asyncio>=0.21.0
+
+# JSON Schema validation
+jsonschema>=4.19.0
+jsonschema[format]>=4.19.0
+
+# API testing and validation
+requests>=2.31.0
+httpx>=0.25.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+
+# Data validation and serialization
+pydantic>=2.5.0
+marshmallow>=3.20.0
+
+# YAML processing
+PyYAML>=6.0.1
+ruamel.yaml>=0.18.0
+
+# Code quality and formatting
+black>=23.10.0
+flake8>=6.1.0
+mypy>=1.7.0
+isort>=5.12.0
+
+# BDD testing
+behave>=1.2.6
+
+# Web testing
+selenium>=4.15.0
+playwright>=1.40.0
+
+# API documentation and validation
+openapi-spec-validator>=0.7.1
+swagger-spec-validator>=3.0.3
+
+# Development utilities
+python-dotenv>=1.0.0
+click>=8.1.7
+rich>=13.7.0
+
+# Database testing (optional)
+SQLAlchemy>=2.0.0
+alembic>=1.12.0
+
+# Mock and fixtures
+factory-boy>=3.3.0
+faker>=20.1.0
