@@ -1,0 +1,14 @@
+{
+  "id": 123,
+  "email": "test.user@example.com",
+  "name": "Test User",
+  "age": 28,
+  "roles": ["user", "moderator"],
+  "profile": {
+    "bio": "A test user for validating Spec-Kit functionality",
+    "website": "https://testuser.example.com",
+    "location": "Test City, TC"
+  },
+  "createdAt": "2023-01-01T12:00:00Z",
+  "updatedAt": "2023-12-01T15:30:00Z"
+}

@@ -1,0 +1,64 @@
+{
+	"name": "Spec-Kit Test Environment",
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11"
+		},
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "17"
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.vscode-json",
+				"redhat.vscode-yaml",
+				"ms-python.python",
+				"ms-python.pylint",
+				"ms-vscode.test-adapter-converter",
+				"ms-vscode.extension-test-runner",
+				"golang.go",
+				"vscjava.vscode-java-pack",
+				"ms-vscode.vscode-typescript-next",
+				"bradlc.vscode-tailwindcss",
+				"esbenp.prettier-vscode",
+				"ms-vscode.vscode-docker",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
+			],
+			
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.formatting.provider": "black",
+				"go.toolsManagement.checkForUpdates": "local",
+				"go.useLanguageServer": true,
+				"java.configuration.runtimes": [
+					{
+						"name": "JavaSE-17",
+						"path": "/usr/local/sdkman/candidates/java/current"
+					}
+				]
+			}
+		}
+	},
+
+	"forwardPorts": [3000, 8000, 8080, 9000],
+
+	"postCreateCommand": "echo 'Welcome to Spec-Kit Test Environment!' && npm --version && python --version && go version && java -version",
+
+	"remoteUser": "codespace"
+}
