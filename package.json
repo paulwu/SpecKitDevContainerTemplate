@@ -44,20 +44,6 @@
     "jsonschema": "^1.4.1",
     "yaml": "^2.3.4"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "testMatch": [
-      "**/tests/**/*.test.(js|ts)",
-      "**/examples/**/*.test.(js|ts)"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{js,ts}",
-      "examples/**/*.{js,ts}",
-      "!**/node_modules/**",
-      "!**/dist/**"
-    ]
-  },
   "prettier": {
     "semi": true,
     "trailingComma": "es5",

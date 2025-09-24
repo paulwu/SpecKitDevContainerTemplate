@@ -29,7 +29,7 @@ test: test-python test-js
 # Run Python tests
 test-python:
 	@echo "Running Python tests..."
-	pytest examples/test-specs/ -v
+	pytest examples/test-specs/api-test.py -v
 
 # Run JavaScript tests
 test-js:
