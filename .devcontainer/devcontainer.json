@@ -1,0 +1,92 @@
+{
+	"name": "Spec-Kit Development Environment",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": "true",
+			"configureZshAsDefaultShell": "true",
+			"installOhMyZsh": "true",
+			"upgradePackages": "true",
+			"username": "vscode",
+			"userUid": "1000",
+			"userGid": "1000"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11",
+			"installTools": true,
+			"optimize": true
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest",
+			"ppa": true
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts",
+			"nodeGypDependencies": true,
+			"installYarnUsingApt": true
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.pylint",
+				"ms-python.black-formatter",
+				"ms-python.isort",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ms-vscode.vscode-json",
+				"redhat.vscode-yaml",
+				"ms-vscode.makefile-tools",
+				"ms-vscode-remote.remote-containers",
+				"ms-vscode.remote-repositories",
+				"eamodio.gitlens",
+				"streetsidesoftware.code-spell-checker",
+				"tamasfe.even-better-toml",
+				"ms-vscode.live-server"
+			],
+			"settings": {
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.formatting.provider": "black",
+				"python.sortImports.provider": "isort",
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"source.organizeImports": true
+				},
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"git.enableSmartCommit": true,
+				"git.confirmSync": false,
+				"github.copilot.enable": {
+					"*": true,
+					"yaml": true,
+					"plaintext": true,
+					"markdown": true
+				}
+			}
+		}
+	},
+
+	"forwardPorts": [3000, 5000, 8000, 8080],
+
+	"postCreateCommand": ".devcontainer/post-create.sh",
+
+	"remoteUser": "vscode",
+
+	"containerEnv": {
+		"PYTHONPATH": "/workspaces/${localWorkspaceFolderBasename}",
+		"PIP_USER": "false"
+	},
+
+	"mounts": [
+		"source=spec-kit-cache,target=/home/vscode/.cache,type=volume"
+	]
+}
