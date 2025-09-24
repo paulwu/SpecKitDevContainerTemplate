@@ -185,6 +185,7 @@ specify init my-project --ai copilot --skip-tls
 3. **Container build issues**
    - Rebuild the container: `Ctrl+Shift+P` → "Dev Containers: Rebuild Container"
    - Check `.devcontainer/TROUBLESHOOTING.md` for network/DNS issues
+   - **WSL + Docker users**: Run cleanup from WSL terminal, not Windows
    - Clear Docker cache if needed
 
 ### Getting Help

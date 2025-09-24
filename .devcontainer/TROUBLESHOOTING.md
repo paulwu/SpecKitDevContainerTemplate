@@ -1,6 +1,47 @@
 # DevContainer Troubleshooting Guide
 
-If you're experiencing network or DNS issues with the DevContainer, you have several options:
+If you're experiencing network, DNS, or caching issues with the DevContainer, you have several options:
+
+## 🚨 Cache Issues (Features Still Being Referenced)
+
+If you see errors mentioning `ghcr.io/devcontainers/features/` in the logs, VS Code is using cached metadata. Here's how to fix it:
+
+### Step 1: Clear Docker Cache
+
+**⚠️ IMPORTANT: Docker Setup Matters!**
+
+**If you're using Docker in WSL (like you are):**
+
+```bash
+# Run from WSL terminal, navigate to your project
+cd /mnt/c/GitHub_paulwu/SpecKitTest
+bash .devcontainer/cleanup.sh
+```
+
+**If you're using Docker Desktop on Windows:**
+
+```powershell
+# Run from Windows PowerShell
+.\.devcontainer\cleanup.ps1
+```
+
+**If you're using Docker Desktop and prefer Command Prompt:**
+
+```cmd
+.devcontainer\cleanup.bat
+```
+
+### Step 2: Clear VS Code Cache
+1. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
+2. Run "Developer: Reload Window"
+3. Close VS Code completely
+4. Delete the `.vscode` folder (if it exists)
+5. Reopen VS Code and the project
+
+### Step 3: Force Rebuild
+1. Press `Ctrl+Shift+P`
+2. Select "Dev Containers: Rebuild Container Without Cache"
+3. Wait for the rebuild to complete
 
 ## Option 1: Use the Current Configuration (Recommended)
 
@@ -59,9 +100,16 @@ If DevContainers don't work in your environment:
 - Contact your IT team about accessing GitHub Container Registry
 
 ### DNS Resolution Issues
+
 - The error `getaddrinfo EAI_AGAIN ghcr.io` indicates DNS problems
 - Try changing your DNS settings to `8.8.8.8` and `8.8.4.4`
 - Use the simple configuration (Option 3) which has fewer external dependencies
+
+### Docker Setup Issues
+
+- **WSL + Docker**: Docker daemon runs in WSL, commands must be run from WSL
+- **Docker Desktop**: Docker daemon runs on Windows, commands can be run from Windows
+- **Mixed Setup**: Won't work - choose one approach
 
 ### Proxy Settings
 If you're behind a corporate proxy, add these to your `devcontainer.json`:
