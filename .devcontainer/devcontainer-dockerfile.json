@@ -1,0 +1,69 @@
+{
+    "name": "Spec-Kit Development Environment (Dockerfile)",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.pylint",
+                "ms-python.flake8",
+                "ms-python.black-formatter",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "ms-vscode.vscode-json",
+                "redhat.vscode-yaml",
+                "ms-vscode.powershell"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.formatting.provider": "black",
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+
+    "onCreateCommand": [
+        "bash",
+        "-c",
+        "echo 'Setting up Spec-Kit development environment...' && /bin/bash .devcontainer/setup.sh"
+    ],
+
+    "postCreateCommand": [
+        "bash",
+        "-c",
+        "echo 'Finalizing setup...' && specify --version || echo 'Run: source ~/.bashrc && specify --version'"
+    ],
+
+    "remoteUser": "vscode",
+    
+    "mounts": [
+        "source=${localWorkspaceFolder}/.devcontainer/cache,target=/home/vscode/.cache,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/.devcontainer/local,target=/home/vscode/.local,type=bind,consistency=cached"
+    ],
+
+    "forwardPorts": [8000, 3000, 5000, 8080],
+    
+    "portsAttributes": {
+        "8000": {
+            "label": "Python Development Server",
+            "onAutoForward": "notify"
+        },
+        "3000": {
+            "label": "Node.js Development Server", 
+            "onAutoForward": "notify"
+        },
+        "5000": {
+            "label": "Flask Development Server",
+            "onAutoForward": "notify"
+        },
+        "8080": {
+            "label": "General Development Server",
+            "onAutoForward": "notify"
+        }
+    }
+}

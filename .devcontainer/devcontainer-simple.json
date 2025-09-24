@@ -1,0 +1,34 @@
+{
+    "name": "Spec-Kit Development Environment (Simple)",
+    "image": "python:3.11-bullseye",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "GitHub.copilot",
+                "GitHub.copilot-chat"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+
+    "onCreateCommand": [
+        "bash",
+        "-c",
+        "echo 'Setting up simple Spec-Kit environment...' && /bin/bash .devcontainer/setup-simple.sh"
+    ],
+
+    "postCreateCommand": [
+        "bash",
+        "-c",
+        "echo 'Setup complete!' && specify --version || echo 'Run: source ~/.bashrc && specify --version'"
+    ],
+
+    "remoteUser": "root",
+    
+    "forwardPorts": [8000, 3000, 5000, 8080]
+}
