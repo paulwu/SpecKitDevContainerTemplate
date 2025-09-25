@@ -1,5 +1,5 @@
 {
-    "name": "Spec-Kit Development Environment (Simple)",
+    "name": "Spec-Kit Development Environment",
     "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
 
     "customizations": {
@@ -16,7 +16,7 @@
         }
     },
 
-    "postCreateCommand": "bash .devcontainer/setup-simple.sh",
+    "postCreateCommand": "bash .devcontainer/setup.sh",
 
     "remoteUser": "vscode",
     
