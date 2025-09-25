@@ -1,4 +1,4 @@
-# SpecKitTest# SpecKitTest
+# SpecKitDevContainerBase# SpecKitDevContainerBase
 
 
 
@@ -75,7 +75,7 @@ cd ~cd ~
 
 git clone <your-repo-url>git clone <your-repo-url>
 
-cd SpecKitTestcd SpecKitTest
+cd SpecKitDevContainerBasecd SpecKitDevContainerBase
 
 
 # Open in VS Code from WSL# Open in VS Code from WSL
