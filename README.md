@@ -122,6 +122,10 @@ Once the DevContainer is running, you can initialize a new Spec-Kit project:
 
 
 ```bash
+# create a directory to store your project code
+mkdir code
+# change to directory
+cd code
 
 # Initialize a new project with GitHub Copilot
 specify init my-project --ai copilot
@@ -172,9 +176,7 @@ After initializing a project, you'll have access to these slash commands in your
 ```bash
 
 # 1. Start with project principles
-/constitution Create principles focused on code quality, testing standards, 
-
-user experience consistency, and performance requirements
+/constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
 
 
 # 2. Define what you want to build
