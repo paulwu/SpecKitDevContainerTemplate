@@ -1,137 +1,87 @@
-# SpecKitTest# SpecKitTest
-
-
+# SpecKitTest
 
 A DevContainer environment configured for Spec-Driven Development using [GitHub's Spec-Kit](https://github.com/github/spec-kit).
 
-
 ## 🌱 About Spec-Kit
-
 
 Spec-Kit enables **Spec-Driven Development** - a methodology that flips traditional development by making specifications executable and directly generating working implementations. Instead of writing code first and documentation later, you define what you want to build (the spec) and let AI agents implement it according to your technical plans.
 
-
 ## 📋 Prerequisites
 
-This project requires **WSL2** (Windows Subsystem for Linux) and **Docker** and to be installed on your system.
-
+This project requires **Docker** and **WSL2** (Windows Subsystem for Linux) to be installed on your system.
 
 ### Required Components
-
 - **WSL2** with Ubuntu distribution
-
 - **Docker Engine** installed in WSL (not Docker Desktop)
-
 - **VS Code** with Dev Containers extension
 
-
 ### ⚡ Quick Setup
-
 If you already have WSL2 and Docker set up:
-
 ```bash
 # 1. Ensure Docker is running
 sudo service docker start
 
 # 2. Clone and open project
 git clone <repo-url>
-
-cd SpecKitBase
-
+cd SpecKitTest
 code .  # Opens VS Code in WSL mode
 
 # 3. Reopen in Container when prompted
-
 ```
 
-
-
 ### 📚 First Time Setup
-
 **New to WSL/Docker?** See our [Complete Setup Guide](./SETUP.md) for detailed step-by-step instructions.
 
-
 ### ⚠️ Important Notes
-
 - **Always open this project from within WSL** (not from Windows file system)
-
 - Project must be located in WSL filesystem (`/home/username/...`)
-
 - Docker must be running in WSL before opening DevContainer
-
 - Use `code .` from WSL terminal, not Windows file explorer
 
-
 ## 🚀 Quick Start
-
 
 ### 1. Clone and Open in WSL
 
 ```bash
+# From your WSL terminal
+cd ~
+git clone <your-repo-url>
+cd SpecKitTest
 
-# From your WSL terminal# From your WSL terminal
-
-cd ~cd ~
-
-git clone <your-repo-url>git clone <your-repo-url>
-
-cd SpecKitTestcd SpecKitTest
-
-
-# Open in VS Code from WSL# Open in VS Code from WSL
+# Open in VS Code from WSL
 code .
-
 ```
-
 
 ### 2. Open in DevContainer
 
 This repository is configured with a DevContainer that includes all necessary tools for Spec-Kit development:
 
-
 - **Python 3.11+** - Required runtime
-
-- **uv** - Modern Python package manager
-
+- **uv** - Modern Python package manager  
 - **Git + Git Credential Manager** - Version control with authentication
-
 - **Spec-Kit CLI** - The core tool for spec-driven development
-
 - **GitHub Copilot** - AI coding assistant integration
-
 - **Development utilities** - curl, wget, build tools, etc.
-
 
 **To get started:**
 
 1. Ensure Docker is running in WSL: `sudo service docker start`
-
 2. Open this repository in VS Code **from WSL**
-
 3. When prompted, click "Reopen in Container"
-
 4. Wait for the container to build and setup to complete
-
 5. Open a terminal and run: `specify check`
-
 
 ### 3. Initialize Your First Project
 
 Once the DevContainer is running, you can initialize a new Spec-Kit project:
 
-
 ```bash
-
 # Initialize a new project with GitHub Copilot
 specify init my-project --ai copilot
 
-
 # Or initialize in the current directory
 specify init --here --ai copilot
-
 ```
-
-
 
 ### 4. Available AI Agents
 
@@ -147,13 +97,11 @@ Spec-Kit supports multiple AI coding agents:
 | Qwen Code | `--ai qwen` | ✅ Fully supported |
 | opencode | `--ai opencode` | ✅ Fully supported |
 
-
-
 ## 🛠️ Spec-Driven Development Workflow
 
 After initializing a project, you'll have access to these slash commands in your AI agent:
 
-### Core Commands### Core Commands
+### Core Commands
 
 | Command | Purpose |
 |---------|---------|
@@ -165,33 +113,24 @@ After initializing a project, you'll have access to these slash commands in your
 | `/analyze` | Cross-artifact consistency & coverage analysis |
 | `/implement` | Execute all tasks to build the feature |
 
-
-### Example Workflow### Example Workflow
+### Example Workflow
 
 ```bash
-
-# 1. Start with project principles# 1. Start with project principles
-
+# 1. Start with project principles
 /constitution Create principles focused on code quality, testing standards, 
-
 user experience consistency, and performance requirements
 
-
 # 2. Define what you want to build
-
 /specify Build a photo album organizer with drag-and-drop functionality
 
 # 3. Create technical plan
-
 /plan Use Vite with vanilla HTML, CSS, JavaScript and SQLite database
 
 # 4. Break down into tasks
-
 /tasks
 
 # 5. Implement the solution
 /implement
-
 ```
 
 ## 📁 DevContainer Configuration
@@ -217,14 +156,13 @@ The DevContainer includes:
 ### Port Forwarding
 
 - `8000` - Python Development Server
-- `3000` - Node.js Development Server
+- `3000` - Node.js Development Server  
 - `5000` - Flask Development Server
 - `8080` - General Development Server
 
 ## 🔧 Manual Setup (Alternative)
 
 If you prefer not to use the DevContainer, you can set up Spec-Kit manually:
-
 
 ### Prerequisites
 
@@ -236,158 +174,103 @@ If you prefer not to use the DevContainer, you can set up Spec-Kit manually:
 ### Installation
 
 ```bash
-
 # Install uv package manager
-
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install Spec-Kit CLI
-
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
-
 # Verify installation
-specify checkspecify check
-
+specify check
 ```
-
-
 
 ## 🚀 Advanced Usage
 
 ### Environment Variables
 
 - `SPECIFY_FEATURE` - Override feature detection for non-Git repositories
-
 - `GH_TOKEN` / `GITHUB_TOKEN` - GitHub token for API requests
-
 
 ### PowerShell Support
 
 ```bash
-
 # Initialize with PowerShell scripts (Windows/cross-platform)
 specify init my-project --ai copilot --script ps
-
 ```
-
-
 
 ### Corporate Environments
 
 ```bash
-
 # Use GitHub token for API requests
 specify init my-project --ai claude --github-token ghp_your_token_here
 
 # Skip SSL/TLS verification (not recommended)
 specify init my-project --ai copilot --skip-tls
-
 ```
 
 ## 🔍 Troubleshooting
+
 ### Common Issues
 
 1. **Docker not found / DevContainer won't start**
-
-```bash
-
-   # Ensure Docker is running in WSL   
-   sudo service docker start   
-
+   ```bash
+   # Ensure Docker is running in WSL
+   sudo service docker start
+   
    # Check Docker status
    sudo service docker status
    
-   # Verify Docker works  
+   # Verify Docker works
    docker run hello-world
-   
    ```
 
-
-
 2. **Permission denied when accessing Docker**
-
-```bash
-
+   ```bash
    # Add user to docker group (then restart WSL)
+   sudo usermod -aG docker $USER
    
-   sudo usermod -aG docker $USER   
-        
-
    # Restart WSL session
-   
    exit  # then reopen WSL terminal
-   
-```
-
-
+   ```
 
 3. **DevContainer build fails**
-
-```bash
-
+   ```bash
    # Clean Docker cache (run from WSL)
-   
    docker system prune -a
-        
-
-   # Rebuild container in VS Code
    
+   # Rebuild container in VS Code
    # Ctrl+Shift+P → "Dev Containers: Rebuild Container"
-
- ```
-
-
+   ```
 
 4. **VS Code can't find WSL/files**
-
    - **Always open project from WSL terminal** using `code .`
-   
    - Don't open from Windows file explorer
-   
    - Project must be in WSL file system (`/home/username/...`)
-   
 
 5. **Spec-Kit CLI not found**
    ```bash
-
    # Ensure PATH includes uv tools
    export PATH="/home/vscode/.local/bin:$PATH"
-   
    source ~/.bashrc
-   
    ```
-
-
 
 6. **Git authentication issues**
-
    ```bash
-   
    # Git Credential Manager should be configured automatically
-   
    git config --global credential.helper manager
-   
    ```
-
-
 
 ### Getting Help
 
 - Run `specify check` to verify your setup
-
 - Check the [Spec-Kit documentation](https://github.com/github/spec-kit)
-
 - Open issues at [github.com/github/spec-kit/issues](https://github.com/github/spec-kit/issues)
 
 ## 📚 Learn More
 
 - [Complete Setup Guide](./SETUP.md) - Detailed installation instructions
-
 - [Complete Spec-Driven Development Methodology](https://github.com/github/spec-kit/blob/main/spec-driven.md)
-
 - [Spec-Kit Video Overview](https://www.youtube.com/watch?v=a9eR1xsfvHg)
-
 - [GitHub Spec-Kit Repository](https://github.com/github/spec-kit)
 
 ## 📄 License
