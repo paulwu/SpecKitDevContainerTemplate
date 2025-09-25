@@ -1,8 +1,9 @@
-# SpecKitDevContainerBase# SpecKitDevContainerBase
+# SpecKitDevContainerBase
 
 
+This repository provides a DevContainer template for setting up a development environment tailored for the [GitHub's Spec-Kit](https://github.com/github/spec-kit) framework tp enable a structured GitHub Copilot-assisted development. It includes all necessary tools, dependencies, and configurations to kickstart your project, ensuring a consistent and reproducible setup.
 
-A DevContainer environment configured for Spec-Driven Development using [GitHub's Spec-Kit](https://github.com/github/spec-kit).
+As a scaffold for new Spec-Kit projects, it contains no application code but provides a pre-configured DevContainer that automates tool and dependency installation, optimized for GitHub Copilot integration.
 
 
 ## 🌱 About Spec-Kit
@@ -36,7 +37,7 @@ sudo service docker start
 # 2. Clone and open project
 git clone <repo-url>
 
-cd SpecKitBase
+cd SpecKitDevContainerBase
 
 code .  # Opens VS Code in WSL mode
 
