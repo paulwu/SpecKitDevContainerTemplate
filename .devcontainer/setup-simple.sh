@@ -1,4 +1,4 @@
-#!/bin/bas#!/bin/bash
+#!/bin/bash
 set -e
 
 echo "🌱 Setting up Simple Spec-Kit Development Environment"
@@ -8,24 +8,9 @@ echo "=================================================="
 echo "📦 Updating system packages..."
 sudo apt-get update -y
 
-# Install essential tools
-echo "🔧 Installing essential tools..."
-sudo apt-get install -y \
-    curl \
-    wget \
-    git \
-    build-essential \
-    ca-certificates
-echo "🌱 Setting up Simple Spec-Kit Development Environment"
-echo "=================================================="
-
-# Update system packages
-echo "📦 Updating system packages..."
-apt-get update -y
-
 # Install Python 3.11 and essential tools
-echo "� Installing Python 3.11 and essential tools..."
-apt-get install -y \
+echo "🐍 Installing Python 3.11 and essential tools..."
+sudo apt-get install -y \
     software-properties-common \
     curl \
     wget \
@@ -34,19 +19,19 @@ apt-get install -y \
     ca-certificates
 
 # Add deadsnakes PPA for Python 3.11
-add-apt-repository ppa:deadsnakes/ppa -y
-apt-get update -y
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt-get update -y
 
 # Install Python 3.11
-apt-get install -y \
+sudo apt-get install -y \
     python3.11 \
     python3.11-dev \
     python3.11-venv \
     python3-pip
 
 # Create symlinks for python and python3
-ln -sf /usr/bin/python3.11 /usr/local/bin/python
-ln -sf /usr/bin/python3.11 /usr/local/bin/python3
+sudo ln -sf /usr/bin/python3.11 /usr/local/bin/python
+sudo ln -sf /usr/bin/python3.11 /usr/local/bin/python3
 
 # Install uv package manager
 echo "📦 Installing uv package manager..."
