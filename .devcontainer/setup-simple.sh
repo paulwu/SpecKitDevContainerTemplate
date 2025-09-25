@@ -8,58 +8,46 @@ echo "=================================================="
 echo "📦 Updating system packages..."
 sudo apt-get update -y
 
-# Install Python 3.11 and essential tools
-echo "🐍 Installing Python 3.11 and essential tools..."
+# Install essential tools (Python 3.11 is already available in the base image)
+echo "� Installing essential tools..."
 sudo apt-get install -y \
-    software-properties-common \
     curl \
     wget \
     git \
     build-essential \
     ca-certificates
 
-# Add deadsnakes PPA for Python 3.11
-sudo add-apt-repository ppa:deadsnakes/ppa -y
-sudo apt-get update -y
+# Verify Python is available
+echo "🐍 Verifying Python installation..."
+python3 --version
+which python3
 
-# Install Python 3.11
-sudo apt-get install -y \
-    python3.11 \
-    python3.11-dev \
-    python3.11-venv \
-    python3-pip
-
-# Create symlinks for python and python3
-sudo ln -sf /usr/bin/python3.11 /usr/local/bin/python
-sudo ln -sf /usr/bin/python3.11 /usr/local/bin/python3
+# Create symlinks for convenience
+sudo ln -sf /usr/local/bin/python3 /usr/local/bin/python
 
 # Install uv package manager
 echo "📦 Installing uv package manager..."
 if ! command -v uv &> /dev/null; then
     curl -LsSf https://astral.sh/uv/install.sh | sh
-    export PATH="/home/vscode/.cargo/bin:$PATH"
-    echo 'export PATH="/home/vscode/.cargo/bin:$PATH"' >> /home/vscode/.bashrc
+    export PATH="/home/vscode/.local/bin:$PATH"
+    echo 'export PATH="/home/vscode/.local/bin:$PATH"' >> /home/vscode/.bashrc
     echo "✅ uv installed successfully"
 else
     echo "✅ uv already installed"
 fi
 
 # Ensure uv is in PATH
-export PATH="/home/vscode/.cargo/bin:$PATH"
+export PATH="/home/vscode/.local/bin:$PATH"
 
 # Install Spec-Kit CLI using uv
 echo "🌱 Installing Spec-Kit CLI..."
 if ! command -v specify &> /dev/null; then
     echo "Installing specify-cli from GitHub..."
-    /home/vscode/.cargo/bin/uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+    /home/vscode/.local/bin/uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
     echo "✅ Spec-Kit CLI installed successfully"
 else
     echo "✅ Spec-Kit CLI already installed"
 fi
-
-# Add uv tools to PATH
-echo 'export PATH="/home/vscode/.local/bin:$PATH"' >> /home/vscode/.bashrc
-export PATH="/home/vscode/.local/bin:$PATH"
 
 # Set up aliases
 echo "🐚 Setting up aliases..."
@@ -78,7 +66,7 @@ EOF
 echo ""
 echo "🔍 Verifying installation..."
 echo "Python version: $(python3 --version)"
-echo "uv version: $(/home/vscode/.cargo/bin/uv --version || echo 'uv not found in PATH')"
+echo "uv version: $(/home/vscode/.local/bin/uv --version || echo 'uv not found in PATH')"
 echo "Git version: $(git --version)"
 
 # Try to verify specify installation
