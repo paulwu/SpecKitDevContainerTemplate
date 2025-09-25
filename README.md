@@ -71,11 +71,11 @@ code .  # Opens VS Code in WSL mode
 
 # From your WSL terminal# From your WSL terminal
 
-cd ~cd ~
+cd ~
 
-git clone <your-repo-url>git clone <your-repo-url>
+git clone <your-repo-url>
 
-cd SpecKitDevContainerBasecd SpecKitDevContainerBase
+cd SpecKitDevContainerBase
 
 
 # Open in VS Code from WSL# Open in VS Code from WSL
@@ -153,7 +153,7 @@ Spec-Kit supports multiple AI coding agents:
 
 After initializing a project, you'll have access to these slash commands in your AI agent:
 
-### Core Commands### Core Commands
+### Core Commands
 
 | Command | Purpose |
 |---------|---------|
@@ -166,27 +166,23 @@ After initializing a project, you'll have access to these slash commands in your
 | `/implement` | Execute all tasks to build the feature |
 
 
-### Example Workflow### Example Workflow
+### Example Workflow
 
 ```bash
 
-# 1. Start with project principles# 1. Start with project principles
-
+# 1. Start with project principles
 /constitution Create principles focused on code quality, testing standards, 
 
 user experience consistency, and performance requirements
 
 
 # 2. Define what you want to build
-
 /specify Build a photo album organizer with drag-and-drop functionality
 
 # 3. Create technical plan
-
 /plan Use Vite with vanilla HTML, CSS, JavaScript and SQLite database
 
 # 4. Break down into tasks
-
 /tasks
 
 # 5. Implement the solution
@@ -247,7 +243,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 
 # Verify installation
-specify checkspecify check
+specify check
 
 ```
 
@@ -309,13 +305,11 @@ specify init my-project --ai copilot --skip-tls
 
 ```bash
 
-   # Add user to docker group (then restart WSL)
-   
+   # Add user to docker group (then restart WSL) 
    sudo usermod -aG docker $USER   
-        
 
-   # Restart WSL session
-   
+
+   # Restart WSL session  
    exit  # then reopen WSL terminal
    
 ```
@@ -326,11 +320,9 @@ specify init my-project --ai copilot --skip-tls
 
 ```bash
 
-   # Clean Docker cache (run from WSL)
-   
+   # Clean Docker cache (run from WSL)   
    docker system prune -a
         
-
    # Rebuild container in VS Code
    
    # Ctrl+Shift+P → "Dev Containers: Rebuild Container"
