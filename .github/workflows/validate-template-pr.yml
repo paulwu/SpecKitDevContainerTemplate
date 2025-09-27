@@ -1,0 +1,157 @@
+name: Validate Template Changes
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  validate-template:
+    runs-on: ubuntu-latest
+    name: Validate Template Contributions
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch full history to compare changes
+    
+    - name: Get changed files
+      id: changed-files
+      run: |
+        # Get list of changed files in this PR
+        git fetch origin main
+        CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+        echo "Changed files:"
+        echo "$CHANGED_FILES"
+        echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+        echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+    
+    - name: Validate template-only changes
+      run: |
+        echo "🔍 Validating that PR only contains template changes..."
+        
+        # Define allowed patterns for template files
+        ALLOWED_PATTERNS=(
+          "^\.devcontainer/"
+          "^\.github/"
+          "^README\.md$"
+          "^SETUP\.md$"
+          "^CONTRIBUTING\.md$"
+          "^example-init\.sh$"
+          "^validate-template\.sh$"
+          "^\.gitignore$"
+          "^\.gitattributes$"
+          "^LICENSE$"
+        )
+        
+        # Check each changed file
+        INVALID_FILES=""
+        while IFS= read -r file; do
+          if [[ -n "$file" ]]; then
+            ALLOWED=false
+            for pattern in "${ALLOWED_PATTERNS[@]}"; do
+              if [[ "$file" =~ $pattern ]]; then
+                ALLOWED=true
+                echo "✅ $file - Template file (allowed)"
+                break
+              fi
+            done
+            
+            if [[ "$ALLOWED" == false ]]; then
+              INVALID_FILES="$INVALID_FILES\n  - $file"
+              echo "❌ $file - Not a template file (blocked)"
+            fi
+          fi
+        done <<< "${{ steps.changed-files.outputs.changed_files }}"
+        
+        if [[ -n "$INVALID_FILES" ]]; then
+          echo ""
+          echo "❌ PR VALIDATION FAILED"
+          echo ""
+          echo "This repository is a template for SpecKit DevContainer setups."
+          echo "Only template infrastructure files should be modified."
+          echo ""
+          echo "The following files are not allowed:"
+          echo -e "$INVALID_FILES"
+          echo ""
+          echo "📋 Allowed file patterns:"
+          echo "  • .devcontainer/ - DevContainer configuration"
+          echo "  • .github/ - GitHub workflows and templates"
+          echo "  • README.md, SETUP.md, CONTRIBUTING.md - Documentation"
+          echo "  • example-init.sh, validate-template.sh - Template scripts"
+          echo "  • .gitignore, .gitattributes - Git configuration"
+          echo ""
+          echo "💡 To create your own SpecKit project:"
+          echo "   1. Use this repository as a template (not fork)"
+          echo "   2. Click 'Use this template' button on GitHub"
+          echo "   3. Develop your project in your own repository"
+          echo "   4. Run 'specify init --here --ai copilot' to get started"
+          echo ""
+          echo "🤝 To contribute template improvements:"
+          echo "   • Only modify template infrastructure files"
+          echo "   • Focus on DevContainer setup, documentation, or examples"
+          echo "   • Do not add your personal project code"
+          exit 1
+        fi
+        
+        echo ""
+        echo "✅ PR VALIDATION PASSED"
+        echo "All changes are to template files only. Thank you for contributing!"
+    
+    - name: Test DevContainer configuration
+      run: |
+        echo "🧪 Testing DevContainer configuration..."
+        
+        # Check that devcontainer.json is valid JSON
+        if [[ -f ".devcontainer/devcontainer.json" ]]; then
+          echo "Validating devcontainer.json syntax..."
+          python3 -m json.tool .devcontainer/devcontainer.json > /dev/null
+          echo "✅ devcontainer.json is valid JSON"
+        fi
+        
+        # Check that setup scripts exist and are executable
+        if [[ -f ".devcontainer/setup-simple.sh" ]]; then
+          echo "✅ setup-simple.sh exists"
+        fi
+        
+        # Validate README.md structure
+        if [[ -f "README.md" ]]; then
+          echo "Checking README.md has required sections..."
+          if grep -q "Quick Start" README.md && grep -q "DevContainer Configuration" README.md; then
+            echo "✅ README.md has required sections"
+          else
+            echo "⚠️  README.md might be missing required sections"
+          fi
+        fi
+        
+        echo "✅ DevContainer configuration tests passed"
+    
+    - name: Check for security issues
+      run: |
+        echo "🔒 Checking for potential security issues..."
+        
+        # Check for exposed secrets or tokens
+        SECRET_PATTERNS=("password" "token" "api_key" "secret" "private_key")
+        FOUND_SECRETS=""
+        
+        while IFS= read -r file; do
+          if [[ -n "$file" && -f "$file" ]]; then
+            for pattern in "${SECRET_PATTERNS[@]}"; do
+              if grep -i "$pattern" "$file" | grep -v "example" | grep -v "placeholder" > /dev/null; then
+                FOUND_SECRETS="$FOUND_SECRETS\n  - $file: contains '$pattern'"
+              fi
+            done
+          fi
+        done <<< "${{ steps.changed-files.outputs.changed_files }}"
+        
+        if [[ -n "$FOUND_SECRETS" ]]; then
+          echo "⚠️  Potential security issues found:"
+          echo -e "$FOUND_SECRETS"
+          echo ""
+          echo "Please review these files to ensure no actual secrets are exposed."
+          echo "Use placeholder values like 'YOUR_TOKEN_HERE' instead."
+        else
+          echo "✅ No obvious security issues detected"
+        fi

@@ -1,0 +1,82 @@
+name: Template Improvement
+description: Suggest improvements to the SpecKit DevContainer template
+title: "[Template] "
+labels: ["template", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🌟 Thanks for helping improve the SpecKit DevContainer template!
+        
+        **Important:** This is for template infrastructure improvements only.
+        
+        ✅ **Template improvements we welcome:**
+        - DevContainer configuration enhancements
+        - Documentation improvements  
+        - Setup script optimizations
+        - GitHub workflow improvements
+        - Validation system improvements
+        
+        ❌ **Not for this repository:**
+        - Your personal project code
+        - Project-specific help or questions
+        - Issues with your own implementations
+        
+        💡 **For your own projects:** Use this repository as a template by clicking "Use this template" button.
+        
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area of Improvement
+      description: Which part of the template needs improvement?
+      options:
+        - DevContainer configuration (.devcontainer/)
+        - Documentation (README.md, SETUP.md)
+        - Setup scripts (example-init.sh, setup-simple.sh)  
+        - GitHub workflows (.github/)
+        - Validation system (validate-template.sh)
+        - Other template infrastructure
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        What improvement would you like to see in the template?
+        
+        Please be specific about:
+        - What currently doesn't work well
+        - What you'd like to see instead
+        - How it would benefit other users of this template
+      placeholder: |
+        Example: "The DevContainer takes too long to build because it installs dependencies individually. 
+        We could use a requirements.txt file to batch install Python packages..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: |
+        Any additional information that would help us understand the improvement?
+        - Screenshots
+        - Error messages  
+        - Environment details
+        - Links to relevant documentation
+      placeholder: Add any additional context here...
+      
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Contribution Guidelines
+      description: Please confirm you understand this repository's purpose
+      options:
+        - label: I understand this is for template infrastructure improvements only
+          required: true
+        - label: I will not submit personal project code to this repository
+          required: true
+        - label: I have read the CONTRIBUTING.md guidelines
+          required: false

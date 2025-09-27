@@ -1,7 +1,7 @@
 # SpecKitDevContainerBase
 
 
-This repository provides a DevContainer template for setting up a development environment tailored for the [GitHub's Spec-Kit](https://github.com/github/spec-kit) framework tp enable a structured GitHub Copilot-assisted development. It includes all necessary tools, dependencies, and configurations to kickstart your project, ensuring a consistent and reproducible setup.
+This repository provides a GitHub template with a DevContainer for setting up a development environment tailored for the [Spec-Kit framework](https://github.com/github/spec-kit) to enable GitHub Copilot-assisted development. It includes all necessary tools, dependencies, and configurations to kickstart your project, ensuring a consistent and reproducible setup.
 
 As a scaffold for new Spec-Kit projects, it contains no application code but provides a pre-configured DevContainer that automates tool and dependency installation, optimized for GitHub Copilot integration.
 
@@ -9,12 +9,12 @@ As a scaffold for new Spec-Kit projects, it contains no application code but pro
 ## 🌱 About Spec-Kit
 
 
-Spec-Kit enables **Spec-Driven Development** - a methodology that flips traditional development by making specifications executable and directly generating working implementations. Instead of writing code first and documentation later, you define what you want to build (the spec) and let AI agents implement it according to your technical plans.
+Spec-Kit enables **Spec-Driven Development** — a methodology that flips traditional development by making specifications executable and directly generating working implementations. Instead of writing code first and documentation later, you define what you want to build (the spec) and let AI agents implement it according to your technical plans.
 
 
 ## 📋 Prerequisites
 
-This project requires **WSL2** (Windows Subsystem for Linux) and **Docker** and to be installed on your system.
+This project requires **WSL2** (Windows Subsystem for Linux) installed on your Windows computer and **Docker** installed in WSL. If you already have these prerequisites, proceed to the [QuickStart - Step 1](#1-clone-and-open-in-wsl).
 
 
 ### Required Components

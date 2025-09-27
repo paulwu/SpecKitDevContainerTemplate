@@ -54,7 +54,7 @@ Thumbs.db
 .devcontainer/cache/
 .devcontainer/local/
 
-# Spec-Kit generated files
+# Spec-Kit generated files (when users clone and use)
 memory/
 .specify/
 
@@ -65,3 +65,27 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+
+# User-specific files that might be added accidentally
+*.local
+*.personal
+.env.local
+.env.personal
+
+# User project files - this is a template only
+# Users should create their own repository from this template
+*.user
+*.project
+app/
+src/
+public/
+static/
+www/
+server/
+client/
+frontend/
+backend/
+api/
+web/
+mobile/
+desktop/

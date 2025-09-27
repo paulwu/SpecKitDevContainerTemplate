@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 SpecKit Documentation
+    url: https://github.com/github/spec-kit
+    about: Official SpecKit framework documentation and guides
+  - name: 💬 General Questions
+    url: https://github.com/github/spec-kit/discussions
+    about: Questions about using SpecKit or spec-driven development methodology
+  - name: 🚀 Create Your Own Project
+    url: https://github.com/paulwu/SpecKitDevContainerBase/generate
+    about: Use this template to create your own SpecKit project repository

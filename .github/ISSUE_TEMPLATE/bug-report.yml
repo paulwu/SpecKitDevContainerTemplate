@@ -1,0 +1,116 @@
+name: Bug Report - Template Issue
+description: Report a bug or issue with the SpecKit DevContainer template
+title: "[Bug] "
+labels: ["bug", "template"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Found a bug in the template?
+        
+        Help us fix issues with the SpecKit DevContainer template infrastructure.
+        
+        **Note:** This is for template bugs only (DevContainer, setup scripts, documentation).
+        For help with your own project, please create your own repository using this template.
+        
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component with Issue
+      description: Which part of the template has the bug?
+      options:
+        - DevContainer configuration (.devcontainer/)
+        - Setup scripts (example-init.sh, setup-simple.sh)
+        - Documentation (README.md, SETUP.md)
+        - GitHub workflows (.github/)
+        - Validation system (validate-template.sh)
+        - Other template infrastructure
+    validations:
+      required: true
+      
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear description of what the bug is
+      placeholder: |
+        Example: "The DevContainer fails to start with error 'Python not found' even though 
+        Python 3.11 should be installed by the setup script."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Clone the repository
+        2. Open in VS Code
+        3. Click "Reopen in Container"
+        4. See error...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: DevContainer should start successfully and all tools should be available...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happens?
+      placeholder: Container fails to start with error messages...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Your development environment details
+      placeholder: |
+        - OS: Windows 11 with WSL2 Ubuntu 22.04
+        - Docker: 24.0.6
+        - VS Code: 1.84.0
+        - Dev Containers extension: v0.315.0
+      value: |
+        - OS: 
+        - Docker version: 
+        - VS Code version: 
+        - Dev Containers extension version: 
+    validations:
+      required: true
+      
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Logs
+      description: Include any relevant error messages or logs
+      placeholder: Paste error messages, DevContainer logs, or terminal output here...
+      render: shell
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Anything else that might be relevant?
+      placeholder: Screenshots, related issues, workarounds you tried...
+      
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      options:
+        - label: I have searched existing issues to make sure this isn't a duplicate
+          required: true
+        - label: This is a template infrastructure bug, not a personal project issue
+          required: true
+        - label: I have included enough information to reproduce the issue
+          required: true
