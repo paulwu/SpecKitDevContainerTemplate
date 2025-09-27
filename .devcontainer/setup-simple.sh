@@ -71,7 +71,6 @@ echo "Git version: $(git --version)"
 
 # Try to verify specify installation
 if command -v /home/vscode/.local/bin/specify &> /dev/null; then
-    echo "Spec-Kit CLI version: $(/home/vscode/.local/bin/specify --version || echo 'Version command not available')"
     echo "✅ Spec-Kit CLI is available"
 else
     echo "⚠️  Spec-Kit CLI may need manual PATH configuration"
