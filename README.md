@@ -26,26 +26,6 @@ This project requires **WSL2** (Windows Subsystem for Linux) and **Docker** and 
 - **VS Code** with Dev Containers extension
 
 
-### ⚡ Quick Setup
-
-If you already have WSL2 and Docker set up:
-
-```bash
-# 1. Ensure Docker is running
-sudo service docker start
-
-# 2. Clone and open project
-git clone <repo-url>
-
-cd SpecKitDevContainerBase
-
-code .  # Opens VS Code in WSL mode
-
-# 3. Reopen in Container when prompted
-
-```
-
-
 
 ### 📚 First Time Setup
 
@@ -72,16 +52,17 @@ code .  # Opens VS Code in WSL mode
 
 # From your WSL terminal# From your WSL terminal
 
-cd ~
+# 1. Ensure Docker is running
+sudo service docker start
 
-git clone <your-repo-url>
+# 2. Clone and open project
+git clone https://github.com/paulwu/SpecKitDevContainerBase.git
 
 cd SpecKitDevContainerBase
 
+code .  # Opens VS Code in WSL mode
 
-# Open in VS Code from WSL# Open in VS Code from WSL
-code .
-
+# 3. Reopen in Container when prompted
 ```
 
 
@@ -122,10 +103,6 @@ Once the DevContainer is running, you can initialize a new Spec-Kit project:
 
 
 ```bash
-# create a directory to store your project code
-mkdir code
-# change to directory
-cd code
 
 # Initialize a new project with GitHub Copilot
 specify init my-project --ai copilot
