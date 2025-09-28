@@ -98,9 +98,9 @@ Before submitting a PR, please:
 
 | I want to... | Action |
 |--------------|--------|
-| Report a template bug | [Create bug report issue](https://github.com/paulwu/SpecKitDevContainerBase/issues/new?template=bug-report.yml) |
-| Suggest template improvement | [Create improvement issue](https://github.com/paulwu/SpecKitDevContainerBase/issues/new?template=template-improvement.yml) |
-| Build my own project | [Use this template](https://github.com/paulwu/SpecKitDevContainerBase/generate) |
+| Report a template bug | [Create bug report issue](https://github.com/paulwu/SpecKitDevContainerTemplate/issues/new?template=bug-report.yml) |
+| Suggest template improvement | [Create improvement issue](https://github.com/paulwu/SpecKitDevContainerTemplate/issues/new?template=template-improvement.yml) |
+| Build my own project | [Use this template](https://github.com/paulwu/SpecKitDevContainerTemplate/generate) |
 | Ask SpecKit questions | [SpecKit Discussions](https://github.com/github/spec-kit/discussions) |
 
 ---

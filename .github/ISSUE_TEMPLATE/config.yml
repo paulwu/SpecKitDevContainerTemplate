@@ -7,5 +7,5 @@ contact_links:
     url: https://github.com/github/spec-kit/discussions
     about: Questions about using SpecKit or spec-driven development methodology
   - name: 🚀 Create Your Own Project
-    url: https://github.com/paulwu/SpecKitDevContainerBase/generate
+    url: https://github.com/paulwu/SpecKitDevContainerTemplate/generate
     about: Use this template to create your own SpecKit project repository

@@ -134,7 +134,7 @@ This guide walks you through setting up the development environment for this Spe
    sudo service docker start
    
    # Navigate to project
-   cd ~/SpecKitDevContainerBase
+   cd ~/SpecKitDevContainerTemplate
    
    # Open in VS Code
    code .
@@ -236,7 +236,7 @@ If you encounter issues not covered here:
 - [ ] WSL2 installed and working
 - [ ] Docker installed in WSL and running
 - [ ] VS Code with WSL + Dev Containers extensions
-- [ ] Project cloned in WSL filesystem (`~/SpecKitDevContainerBase`)
+- [ ] Project cloned in WSL filesystem (`~/SpecKitDevContainerTemplate`)
 - [ ] DevContainer opens without errors
 - [ ] `specify check` command works in container terminal
 

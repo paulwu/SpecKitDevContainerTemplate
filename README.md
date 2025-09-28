@@ -3,7 +3,8 @@
 
 This repository provides a GitHub template with a DevContainer for setting up a development environment tailored for the [Spec-Kit framework](https://github.com/github/spec-kit) to enable GitHub Copilot-assisted development. It includes all necessary tools, dependencies, and configurations to kickstart your project, ensuring a consistent and reproducible setup.
 
-As a scaffold for new Spec-Kit projects, it contains no application code but provides a pre-configured DevContainer that automates tool and dependency installation, optimized for GitHub Copilot integration.
+Since this repository is a template, you should always create a new repository from this template to work in. Although this repository contains no application code, it provides a preconfigured development container (DevContainer) that automates the installation of tools and dependencies. Your repository will serve as a scaffold for Spec-Kit projects, optimized for GitHub Copilot integration.
+
 
 
 ## 🌱 About Spec-Kit
@@ -45,8 +46,15 @@ This project requires **WSL2** (Windows Subsystem for Linux) installed on your W
 
 ## 🚀 Quick Start
 
+### 1. Create your repo from the template
 
-### 1. Clone and Open in WSL
+1. Navigate to the [SpecKitDevContainerTemplate](https://github.com/paulwu/SpecKitDevContainerTemplate) repo on GitHub.
+2. Click the green “Use this template” button
+3. Select “Create a new repository” and fill in the details (e.g., repository name, visibility like public/private).
+4. This creates a new repository (e.g., https://github.com/your-username/new-project) based on the template, with a clean commit history (no history from the template repo).
+5. Get the URL for the repo. You'll need this URL in the next step. It should look like https://github.com/your-username/new-project.git
+
+### 2. Clone and Open in WSL
 
 ```bash
 
@@ -56,9 +64,9 @@ This project requires **WSL2** (Windows Subsystem for Linux) installed on your W
 sudo service docker start
 
 # 2. Clone and open project
-git clone https://github.com/paulwu/SpecKitDevContainerBase.git
+git clone <https://github.com/your-username/new-project.git>
 
-cd SpecKitDevContainerBase
+cd <new-project>
 
 code .  # Opens VS Code in WSL mode
 
@@ -66,7 +74,7 @@ code .  # Opens VS Code in WSL mode
 ```
 
 
-### 2. Open in DevContainer
+### 3. Open in DevContainer
 
 This repository is configured with a DevContainer that includes all necessary tools for Spec-Kit development:
 
