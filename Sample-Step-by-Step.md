@@ -1,0 +1,461 @@
+# Sample Step-by-Step Guide: Building a To-Do List Web App with Spec-Kit
+
+This guide demonstrates how to use Spec-Kit to build a to-do list web application that integrates with Azure CosmosDB and Entra ID authentication using the Spec-Driven Development methodology.
+
+## 📋 Project Overview
+
+**What we're building:**
+- A modern web-based to-do list application
+- User authentication via Microsoft Entra ID (Azure AD)
+- Data persistence using Azure CosmosDB
+- Responsive design for desktop and mobile
+- Real-time updates and collaborative features
+
+**Tech Stack:**
+- Frontend: React.js with TypeScript
+- Backend: Node.js with Express
+- Database: Azure CosmosDB (SQL API)
+- Authentication: Microsoft Entra ID (MSAL)
+- Hosting: Azure App Service
+
+---
+
+## 🚀 Prerequisites
+
+Before starting, ensure you have:
+
+1. **DevContainer Setup Complete** - Follow the main README.md setup
+2. **Azure Account** - For CosmosDB and Entra ID setup
+3. **GitHub Copilot** - Enabled in VS Code
+4. **Basic knowledge** - JavaScript/TypeScript, REST APIs, Azure basics
+
+---
+
+## 📝 Step-by-Step Implementation
+
+### Step 1: Initialize the Spec-Kit Project
+
+```bash
+# 1. Navigate to your code directory
+cd /workspaces/SpecKitDevContainerBase
+mkdir code && cd code
+
+# 2. Initialize a new Spec-Kit project
+specify init todo-app --ai copilot
+
+# 3. Navigate into the project
+cd todo-app
+
+# 4. Open the project in VS Code
+code .
+```
+
+**Expected Output:**
+- New project folder created with Spec-Kit structure
+- `.github/prompts/` directory with all slash command templates
+- `.specify/` directory for Spec-Kit configuration
+
+---
+
+### Step 2: Create Project Constitution
+
+Open **GitHub Copilot Chat** in VS Code and run:
+
+```
+/constitution Create principles for a production-ready to-do application focusing on:
+- Security best practices for handling user data and authentication
+- Performance requirements for responsive UI (< 2s load time)
+- Code quality standards with TypeScript, ESLint, and comprehensive testing
+- Accessibility compliance (WCAG 2.1 AA)
+- Azure cloud-native architecture patterns
+- Data privacy and GDPR compliance for user information
+```
+
+**Expected Output:**
+- `CONSTITUTION.md` file created with comprehensive project principles
+- Security guidelines for handling sensitive data
+- Performance benchmarks and monitoring requirements
+- Code quality standards and testing requirements
+
+---
+
+### Step 3: Define Application Specifications
+
+In **GitHub Copilot Chat**, run:
+
+```
+/specify Build a to-do list web application with the following features:
+
+USER AUTHENTICATION:
+- Microsoft Entra ID integration for user login/logout
+- Role-based access (personal vs shared lists)
+- Secure session management
+
+CORE FUNCTIONALITY:
+- Create, read, update, delete tasks
+- Task categories and priority levels
+- Due dates and reminders
+- Task completion tracking
+- Search and filtering capabilities
+
+DATA MANAGEMENT:
+- Store all data in Azure CosmosDB
+- Real-time sync across devices
+- Offline capability with sync on reconnect
+- Data backup and recovery
+
+USER INTERFACE:
+- Responsive design (mobile-first)
+- Dark/light theme toggle
+- Drag-and-drop task reordering
+- Keyboard shortcuts for power users
+- Progressive Web App (PWA) capabilities
+
+COLLABORATION:
+- Share lists with other users
+- Real-time collaborative editing
+- Activity feed and notifications
+- Permission management (view/edit)
+```
+
+**Expected Output:**
+- `SPECIFICATION.md` file with detailed feature requirements
+- User stories and acceptance criteria
+- API endpoint definitions
+- Database schema requirements
+
+---
+
+### Step 4: Clarify Requirements and De-risk
+
+In **GitHub Copilot Chat**, run:
+
+```
+/clarify Focus on these areas that need clarification:
+
+TECHNICAL DECISIONS:
+- CosmosDB partition key strategy for multi-tenant data
+- Real-time updates implementation (WebSockets vs SignalR)
+- Offline sync conflict resolution strategy
+- Entra ID application registration configuration
+
+SECURITY CONSIDERATIONS:
+- Token refresh and rotation strategy
+- API rate limiting and DDoS protection
+- Data encryption at rest and in transit
+- Cross-origin resource sharing (CORS) policies
+
+SCALABILITY PLANNING:
+- Expected user load and growth projections
+- Database indexing strategy
+- Caching layer requirements (Redis)
+- CDN configuration for global performance
+
+INTEGRATION DETAILS:
+- Microsoft Graph API integration scope
+- Azure Application Insights monitoring
+- CI/CD pipeline with Azure DevOps
+- Environment configuration (dev/staging/prod)
+```
+
+**Expected Output:**
+- `CLARIFICATION.md` file addressing technical uncertainties
+- Risk mitigation strategies
+- Architecture decision records (ADRs)
+- Integration requirements and constraints
+
+---
+
+### Step 5: Create Technical Implementation Plan
+
+In **GitHub Copilot Chat**, run:
+
+```
+/plan Create a technical implementation plan using:
+
+FRONTEND ARCHITECTURE:
+- React 18 with TypeScript
+- Vite for build tooling and development server
+- React Query for API state management
+- Material-UI (MUI) for component library
+- React Router for navigation
+- MSAL React for Entra ID authentication
+
+BACKEND ARCHITECTURE:
+- Node.js 18+ with Express.js
+- TypeScript for type safety
+- Azure CosmosDB SDK for database operations
+- Passport.js with Azure AD strategy
+- Socket.io for real-time features
+- Helmet.js for security headers
+
+INFRASTRUCTURE:
+- Azure App Service for hosting (Frontend & API)
+- Azure CosmosDB (SQL API) for data storage
+- Azure Application Insights for monitoring
+- Azure Key Vault for secrets management
+- Azure CDN for static asset delivery
+
+DEVELOPMENT SETUP:
+- Docker containers for local development
+- ESLint + Prettier for code formatting
+- Jest + React Testing Library for testing
+- Husky for git hooks and pre-commit checks
+- GitHub Actions for CI/CD pipeline
+```
+
+**Expected Output:**
+- `PLAN.md` file with detailed technical architecture
+- Technology choices with justifications
+- Project structure and folder organization
+- Development workflow and tooling setup
+
+---
+
+### Step 6: Generate Implementation Tasks
+
+In **GitHub Copilot Chat**, run:
+
+```
+/tasks Break down the implementation into actionable tasks with priority order:
+
+PHASE 1 - PROJECT SETUP:
+- Initialize React + TypeScript project with Vite
+- Configure ESLint, Prettier, and Husky
+- Set up folder structure and basic routing
+- Create Azure resources (CosmosDB, App Service, Entra ID)
+- Configure environment variables and secrets
+
+PHASE 2 - AUTHENTICATION:
+- Implement MSAL configuration for Entra ID
+- Create login/logout components and flows
+- Set up protected routes and auth context
+- Configure token refresh and error handling
+- Add user profile and session management
+
+PHASE 3 - BACKEND API:
+- Set up Express.js server with TypeScript
+- Configure CosmosDB connection and models
+- Implement authentication middleware
+- Create REST API endpoints for tasks
+- Add input validation and error handling
+
+PHASE 4 - CORE FEATURES:
+- Implement task CRUD operations
+- Create task list UI components
+- Add categories, priorities, and due dates
+- Implement search and filtering
+- Add task completion and progress tracking
+
+PHASE 5 - ADVANCED FEATURES:
+- Implement real-time updates with WebSockets
+- Add offline capability and sync
+- Create sharing and collaboration features
+- Implement PWA capabilities
+- Add notifications and reminders
+
+PHASE 6 - OPTIMIZATION & DEPLOYMENT:
+- Performance optimization and caching
+- Security audit and penetration testing
+- Monitoring and logging setup
+- Production deployment and DNS configuration
+- Documentation and user guides
+```
+
+**Expected Output:**
+- `TASKS.md` file with prioritized task breakdown
+- Estimated effort and dependencies for each task
+- Definition of done criteria
+- Testing requirements for each feature
+
+---
+
+### Step 7: Validate Alignment and Consistency
+
+In **GitHub Copilot Chat**, run:
+
+```
+/analyze Perform a comprehensive analysis to ensure consistency across all artifacts:
+
+REQUIREMENTS TRACEABILITY:
+- Verify all features from SPECIFICATION are covered in PLAN
+- Check that TASKS align with technical architecture
+- Ensure CONSTITUTION principles are reflected in implementation
+
+TECHNICAL CONSISTENCY:
+- Validate technology choices support all required features
+- Check for missing dependencies or integration points
+- Verify security requirements are addressed throughout
+
+FEASIBILITY ASSESSMENT:
+- Evaluate complexity vs timeline expectations
+- Identify potential technical risks or blockers
+- Assess team skill requirements and knowledge gaps
+
+COMPLETENESS CHECK:
+- Ensure all Azure services are properly configured
+- Verify authentication flows are secure and complete
+- Check that data models support all use cases
+```
+
+**Expected Output:**
+- `ANALYSIS.md` file highlighting any inconsistencies
+- Risk assessment with mitigation strategies
+- Recommendations for architecture improvements
+- Gap analysis and missing requirements
+
+---
+
+### Step 8: Execute Implementation
+
+In **GitHub Copilot Chat**, run:
+
+```
+/implement Execute the implementation plan starting with Phase 1:
+
+Begin with project setup and infrastructure:
+1. Create the React + TypeScript project structure
+2. Configure development environment and tooling
+3. Set up Azure resources and connection strings
+4. Implement basic authentication flow with Entra ID
+5. Create foundational components and routing
+
+Focus on creating a working MVP first, then iterate through the phases systematically. Ensure each component is properly tested before moving to the next phase.
+```
+
+**Expected Output:**
+- Generated project files and folder structure
+- Configuration files for all development tools
+- Basic React components and routing setup
+- Azure resource configuration scripts
+- Initial test files and CI/CD pipeline
+
+---
+
+## 🔄 Iterative Development Process
+
+After the initial implementation:
+
+### Continue with Iterative Specification
+
+```
+/specify Add advanced features for the next iteration:
+- Task templates and recurring tasks
+- Time tracking and productivity analytics
+- Integration with Microsoft Teams and Outlook
+- Mobile app companion (React Native)
+- AI-powered task prioritization and suggestions
+```
+
+### Plan Additional Features
+
+```
+/plan Extend the architecture to support:
+- Machine learning integration for task recommendations
+- Multi-language support and localization
+- Advanced reporting and dashboard features
+- Third-party integrations (Slack, Trello, etc.)
+- Enterprise features (admin panel, user management)
+```
+
+### Generate New Tasks
+
+```
+/tasks Create implementation tasks for the new features prioritized by user value and technical complexity
+```
+
+---
+
+## 📊 Expected Project Structure
+
+After running through all steps, your project will have:
+
+```
+todo-app/
+├── .github/
+│   ├── prompts/           # Spec-Kit slash command templates
+│   └── workflows/         # CI/CD pipeline configuration
+├── .specify/              # Spec-Kit configuration
+├── docs/                  # Generated documentation
+│   ├── CONSTITUTION.md    # Project principles and standards
+│   ├── SPECIFICATION.md   # Feature requirements and user stories
+│   ├── CLARIFICATION.md   # Risk mitigation and decisions
+│   ├── PLAN.md           # Technical architecture and design
+│   ├── TASKS.md          # Implementation breakdown
+│   └── ANALYSIS.md       # Consistency validation report
+├── src/                   # Application source code
+├── tests/                 # Test files and test data
+├── azure/                 # Infrastructure as Code (ARM/Bicep)
+└── package.json          # Dependencies and scripts
+```
+
+---
+
+## 🎯 Key Benefits of This Approach
+
+1. **Clear Requirements** - Every feature is specified before implementation
+2. **Risk Mitigation** - Potential issues identified and addressed early
+3. **Consistent Architecture** - All components follow established patterns
+4. **Comprehensive Testing** - Test requirements defined alongside features
+5. **Documentation First** - Living documentation that evolves with code
+6. **Iterative Improvement** - Easy to extend and modify requirements
+
+---
+
+## 🔍 Troubleshooting Common Issues
+
+### Slash Commands Not Working
+
+```bash
+# Ensure you're in a Spec-Kit project directory
+cd /workspaces/SpecKitDevContainerBase/code/todo-app
+
+# Verify Spec-Kit files exist
+ls .github/prompts/
+
+# Check Copilot Chat is enabled in VS Code
+```
+
+### Azure Integration Issues
+
+```bash
+# Verify Azure CLI is configured
+az login
+az account show
+
+# Check resource group and subscription
+az group list
+```
+
+### Development Environment Problems
+
+```bash
+# Reset the development environment
+specify check
+source ~/.bashrc
+
+# Verify Node.js and npm
+node --version
+npm --version
+```
+
+---
+
+## 📚 Next Steps
+
+1. **Follow this guide step-by-step** to build your first Spec-Kit application
+2. **Experiment with different specifications** to see how the plan adapts
+3. **Try other AI agents** (Claude, Cursor) for different perspectives
+4. **Extend the example** with additional features like mobile apps or microservices
+5. **Share your results** and contribute back to the Spec-Kit community
+
+---
+
+## 🤝 Getting Help
+
+- **Spec-Kit Documentation**: https://github.com/github/spec-kit
+- **Azure CosmosDB Docs**: https://docs.microsoft.com/en-us/azure/cosmos-db/
+- **Microsoft Entra ID**: https://docs.microsoft.com/en-us/azure/active-directory/
+- **React + TypeScript**: https://react-typescript-cheatsheet.netlify.app/
+
+Happy building with Spec-Kit! 🚀

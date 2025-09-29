@@ -56,7 +56,24 @@ Thumbs.db
 
 # Spec-Kit generated files (when users clone and use)
 memory/
-.specify/
+# Spec-Kit - Selective tracking for collaboration
+# Track core artifacts but ignore cache/temp files
+.specify/cache/
+.specify/logs/
+.specify/.tmp/
+.specify/local/
+.specify/*.log
+.specify/**/*.tmp
+.specify/**/*.cache
+
+# Keep these files TRACKED for team collaboration:
+# .specify/config.yaml          - Project configuration and settings
+# .specify/memory/              - All specification artifacts
+# .specify/memory/constitution/ - Project principles and standards
+# .specify/memory/specifications/ - Feature requirements and user stories
+# .specify/memory/plans/        - Technical architecture and implementation plans
+# .specify/memory/tasks/        - Task breakdowns and implementation guidance
+# .specify/memory/analysis/     - Consistency checks and validation reports
 
 # Logs
 *.log
