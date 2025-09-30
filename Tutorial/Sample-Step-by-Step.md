@@ -336,7 +336,9 @@ PHASE 6 - OPTIMIZATION & DEPLOYMENT:
 - Documentation and user guides
 ```
 
-**Expected Output:**
+Spec-Kit creates task list in `tasks.md` with dependency-ordered tasks spanning setup through optimization, honoring the phase sequences, TDD ordering, entity coverage, and contract/endpoints mapping. Creates requirements coverage: tasks doc. Enforce phase breakdown
+ 
+ *Expected Output:**
 - `TASKS.md` file with prioritized task breakdown
 - Estimated effort and dependencies for each task
 - Definition of done criteria
